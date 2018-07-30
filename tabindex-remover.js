@@ -5,11 +5,10 @@ javascript: if (window.jQuery === undefined) {
   document.getElementsByTagName('head')[0].appendChild(jq);
   setTimeout(function() {
     jQuery.noConflict();
-    var iframed_tabindex = jQuery('#ptifrmtgtframe').contents().find('img');
+    var iframed_tabindex = jQuery('#ptifrmtgtframe').contents().find('[tabindex]');
     console.log('jQuery loaded');
     console.log(jQuery(iframed_tabindex).length + ' tabindex attributes will be removed');
     jQuery(iframed_tabindex).each(function() {
-      jQuery(this).css('border','1px solid red');
       jQuery(this).removeAttr("tabindex");
     });
   }, 1000);
@@ -20,7 +19,6 @@ javascript: if (window.jQuery === undefined) {
   console.log('jQuery loaded already');
   if (jQuery(iframed_tabindex).length) {
     jQuery(iframed_tabindex).each(function() {
-      jQuery(this).css('border','1px solid red');
       jQuery(this).removeAttr("tabindex");
     });
   }

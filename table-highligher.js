@@ -10,11 +10,12 @@ javascript: if (window.jQuery === undefined) {
     console.log('jQuery loaded');
     console.log(jQuery(iframed_target).length + ' tables will be highlighted');
     jQuery(iframed_target).each(function() {
+
       var role = jQuery(this).attr('role');
       if (typeof role !== typeof undefined && role !== false) {
-        jQuery(this).css('border','1px dashed red');
+        jQuery(this).css('border','1px dashed blue');
       } else {
-        jQuery(this).css('border','1px solid blue');
+        jQuery(this).css('border','1px solid red');
       }
 
     });
