@@ -5,21 +5,19 @@ javascript: if (window.jQuery === undefined) {
   document.getElementsByTagName('head')[0].appendChild(jq);
   setTimeout(function() {
     jQuery.noConflict();
-    var iframed_tabindex = jQuery('#ptifrmtgtframe').contents().find('[tabindex]');
     console.log('jQuery loaded');
-    console.log(jQuery(iframed_tabindex).length + ' tabindex attributes will be removed');
-    jQuery(iframed_tabindex).each(function() {
+    var tabindexEls = jQuery('body').find('[tabindex]:not([tabindex="0"]):not([tabindex^="-"])');
+    console.log(jQuery(tabindexEls).length + ' tabindex attributes greater than 0 will be removed');
+    jQuery(tabindexEls).each(function() {
       jQuery(this).removeAttr("tabindex");
     });
   }, 1000);
   void(0);
 } else {
-  var iframed_tabindex = jQuery('#ptifrmtgtframe').contents().find('[tabindex]');
-  console.log(jQuery(iframed_tabindex).length + ' tabindex where found');
   console.log('jQuery loaded already');
-  if (jQuery(iframed_tabindex).length) {
-    jQuery(iframed_tabindex).each(function() {
-      jQuery(this).removeAttr("tabindex");
-    });
-  }
+  var tabindexEls = jQuery('body').find('[tabindex]:not([tabindex="0"]):not([tabindex^="-"])');
+  console.log(jQuery(tabindexEls).length + ' tabindex attributes greater than 0 will be removed');
+  jQuery(tabindexEls).each(function() {
+    jQuery(this).removeAttr("tabindex");
+  });
 }
